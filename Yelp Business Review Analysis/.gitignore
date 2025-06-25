@@ -1,0 +1,7 @@
+# .gitignore file
+
+.env
+__pycache__/
+.ipynb_checkpoints/
+.terraform
+*.tfstate
