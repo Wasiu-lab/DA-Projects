@@ -89,3 +89,27 @@ round((sales_2023-sales_2022)*100/sales_2022, 2) as growth_percent
 from cte2
 order by growth_percent desc
 limit 1;
+
+-- Top-Selling Products or Categories
+SELECT
+  sub_category,
+  SUM(sale_price) AS total_sales,
+  SUM(quantity) AS total_quantity,
+  SUM(profit) AS total_profit
+FROM orders
+GROUP BY sub_category
+ORDER BY total_sales DESC
+LIMIT 10;
+
+-- Loss-Making Products (Negative Profit)
+SELECT
+  product_id,
+  sub_category,
+  SUM(profit) AS total_loss,
+  COUNT(*) AS loss_count
+FROM orders
+WHERE profit < 0
+GROUP BY product_id, sub_category
+ORDER BY total_loss ASC
+LIMIT 10;
+
