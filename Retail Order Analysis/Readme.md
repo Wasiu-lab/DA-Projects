@@ -62,45 +62,6 @@ Retail Order Analysis/
 - **Loss Analysis**: Identification of loss-making products and categories
 - **Profitability Ranking**: Products ranked by profit margins
 
-## Key SQL Queries
-
-### 1. Top Revenue Products
-```sql
-SELECT product_id, SUM(sale_price) as sales 
-FROM orders
-GROUP BY product_id
-ORDER BY sales DESC
-LIMIT 10;
-```
-
-### 2. Regional Top Performers
-```sql
-WITH cte AS (
-    SELECT region, product_id, SUM(sale_price) as sales 
-    FROM orders
-    GROUP BY region, product_id
-)
-SELECT * FROM (
-    SELECT *, ROW_NUMBER() OVER (PARTITION BY region ORDER BY sales DESC) as rn
-    FROM cte
-) A 
-WHERE rn <= 5;
-```
-
-### 3. Year-over-Year Growth
-```sql
-WITH cte AS (
-    SELECT YEAR(order_date) as order_year, MONTH(order_date) as order_month, 
-           SUM(sale_price) as sales
-    FROM orders 
-    GROUP BY order_year, order_month
-)
-SELECT order_month,
-    SUM(CASE WHEN order_year=2022 THEN sales ELSE 0 END) as sales_2022, 
-    SUM(CASE WHEN order_year=2023 THEN sales ELSE 0 END) as sales_2023
-FROM cte
-GROUP BY order_month
-ORDER BY order_month;
 ```
 
 ## Setup Instructions
