@@ -4,7 +4,7 @@
 This project analyzes retail order data to extract meaningful business insights using Python and SQL. The analysis focuses on sales performance, product profitability, regional trends, and growth patterns across different time periods.
 
 ## Dataset
-The project uses the **Retail Orders** dataset from Kaggle, which contains comprehensive information about retail transactions including:
+The project uses the **Retail Orders** dataset from Kaggle, which contains comprehensive information about retail transactions, including:
 - Order details (ID, date, shipping mode)
 - Customer segmentation data
 - Geographic information (country, state, city, region)
@@ -26,7 +26,7 @@ Retail Order Analysis/
 - **Python**: Data processing and analysis
   - pandas: Data manipulation and cleaning
   - sqlalchemy: Database connectivity
-  - kaggle: Dataset download
+  - Kaggle API: Dataset download
   - python-dotenv: Environment variable management
 - **MySQL**: Data storage and advanced analytics
 - **Jupyter Notebook**: Interactive development environment
